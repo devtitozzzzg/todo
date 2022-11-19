@@ -1,11 +1,19 @@
 {% extends 'bootstrap/base.html' %}
+{% block title %}Sign Up{% endblock %}
+
 {% block content %}
-<h1>ユーザー登録</h1>
-<form method="POST">
-    <label for="username">ユーザー名</label>
-    <input type="text" name="username">
-    <label for="password">パスワード</label>
-    <input type="password" name="password">
-    <input type="submit" value="新規登録">
-</form>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/signup.css')}}">
+<div class="form-signup">
+    <form method="POST">
+        <div class="form-floating">
+            <label for="username">ユーザー名</label>
+            <input type="text" name="username" class="form-control">
+        </div>
+        <div class="form-floating">
+            <label for="password">パスワード</label>
+            <input type="password" name="password" class="form-control">
+        </div>
+        <button type="submit" class="w-100 btn btn-lg btn-primary">Sign Up</button>
+    </form>
+</div>
 {% endblock %}

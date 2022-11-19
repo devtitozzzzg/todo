@@ -2,17 +2,18 @@
 {% block title %}ログイン{% endblock %}
 
 {% block content %}
-<div class="container">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/login.css')}}">
+<div class="form-login">
     <form method="POST">
-        <div class="mb-3">
-            <label for="username" class="form-label">ユーザー名</label>
+        <div class="form-floating">
+            <label for="username">ユーザー名</label>
             <input type="text" name="username" class="form-control">
         </div>
-        <div class="mb-3">
-            <label for="password" class="form-label">パスワード</label>
+        <div class="form-floating">
+            <label for="password">パスワード</label>
             <input type="password" name="password" class="form-control">
         </div>
-        <button type="submit" class="btn btn-primary">ログイン</button>
+        <button type="submit" class="w-100 btn btn-lg btn-primary">ログイン</button>
     </form>
 </div>
 {% endblock %}
