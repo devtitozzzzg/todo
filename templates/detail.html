@@ -1,19 +1,18 @@
 {% extends 'bootstrap/base.html' %}
-{% block title %}新規登録ページ{% endblock %}
+{% block title %}詳細ページ{% endblock %}
 
 {% block content %}
 <div class="container">
-    <h1>新規登録</h1>
+    <h1>詳細</h1>
     <form method="POST">
         <div class="mb-3">
             <label for="title">タイトル</label>
-            <input type="text" name="title" class="form-control">
+            <input type="text" class="form-control" name="title" value={{todo.title}} disabled>
         </div>
         <div class="mb-3">
             <label for="body">内容</label>
-            <textarea name="body" rows="25" cols="20" class="form-control"></textarea>
+            <textarea rows="25" cols="20" class="form-control" name="body" disabled>{{todo.body}}</textarea>
         </div>
-        <button type="submit" class="btn btn-primary">新規登録</button>
         <a class="btn btn-default" href="/" role="button">戻る</a>
     </form>
 </div>

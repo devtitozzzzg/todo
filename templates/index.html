@@ -3,17 +3,39 @@
 
 {% block content %}
 <div class="container">
-    <h1>TODOアプリケーション</h1>
-    <a href="/create" role="button">新規作成画面</a>
-    <a href="/logout" role="button">ログアウト</a>
-    {% for todo in todos %}
-    <article>
-        <h2>{{ todo.title }}</h2>
-        <a href="/{{ todo.id }}/edit" role="button">編集</a>
-        <a href="/{{ todo.id }}/delete" role="button">削除</a>
-        <p>{{ todo.created_at }}</p>
-        <p>{{ todo.body }}</p>
-    </article>
-    {% endfor %}
+    <h1>TODO一覧</h1>
+    <a class="btn btn-primary" href="/create" role="button">新規作成画面</a>
+    <a class="btn btn-primary" href="/logout" role="button">ログアウト</a>
+    <br><br>
+    <table class="table table-bordered text-nowrap">
+        <thead>
+            <tr>
+                <th>タイトル</th>
+                <th>内容</th>
+                <th>作成日</th>
+                <th></th>
+                <th></th>
+                <th></th>
+            </tr>
+        </thead>
+        {% for todo in todos %}
+        <tbody>
+            <tr>
+                <td>{{ todo.title }}</td>
+                <td>{{ todo.body }}</td>
+                <td>{{ todo.created_at }}</td>
+                <td class="text-center">
+                    <a class="btn btn-primary" href="/{{ todo.id }}/edit" role="button">編集</a>
+                </td>
+                <td class="text-center">
+                    <a class="btn btn-default" href="/{{ todo.id }}/detail" role="button">詳細</a>
+                </td>
+                <td class="text-center">
+                    <a class="btn btn-danger" href="/{{ todo.id }}/delete" role="button">削除</a>
+                </td>
+            </tr>
+        </tbody>
+        {% endfor %}
+    </table>
 </div>
 {% endblock %}

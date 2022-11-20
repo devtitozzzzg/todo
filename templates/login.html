@@ -3,17 +3,14 @@
 
 {% block content %}
 <link rel="stylesheet" href="{{ url_for('static', filename='css/login.css')}}">
-<div class="form-login">
-    <form method="POST">
-        <div class="form-floating">
-            <label for="username">ユーザー名</label>
-            <input type="text" name="username" class="form-control">
-        </div>
-        <div class="form-floating">
-            <label for="password">パスワード</label>
-            <input type="password" name="password" class="form-control">
-        </div>
-        <button type="submit" class="w-100 btn btn-lg btn-primary">ログイン</button>
-    </form>
+<div class="container">
+    <div class="wrapper">
+        <form method="POST" class="form-signin">
+            <h3 class="form-signin-heading">ログイン画面へようこそ!</h3>
+            <input type="text" class="form-control" name="username" placeholder="username" required="" autofocus="">
+            <input type="password" class="form-control" name="password" placeholder="password" required="" autofocus="">
+            <button type="submit" class="btn btn-lg btn-primary btn-block">ログイン</button>
+        </form>
+    </div>
 </div>
 {% endblock %}

@@ -71,12 +71,18 @@ def login():
 @app.route('/logout', methods=['GET', 'POST'])
 @login_required
 def logout():
+    """
+    ログアウト
+    """
     logout_user()
     return redirect('/login')
     
 @app.route('/', methods=['GET', 'POST'])
 @login_required
 def index():
+    """
+    初期表示
+    """
     if request.method == 'GET':
         todos = Todo.query.all()
         return render_template('index.html', todos=todos)
@@ -84,7 +90,9 @@ def index():
 @app.route('/create', methods=['GET', 'POST'])
 @login_required
 def create():
-
+    """
+    新規登録
+    """
     # 投稿する場合
     if request.method == 'POST':
         title = request.form.get('title')
@@ -104,6 +112,9 @@ def create():
 @app.route('/<int:id>/edit', methods=['GET', 'POST'])
 @login_required
 def edit(id):
+    """
+    編集
+    """
     todo = Todo.query.get(id)
 
     # アクセスする場合
@@ -122,6 +133,9 @@ def edit(id):
 @app.route('/<int:id>/delete', methods=['GET'])
 @login_required
 def delete(id):
+    """
+    削除
+    """
     todo = Todo.query.get(id)
 
     db.session.delete(todo)
@@ -129,4 +143,17 @@ def delete(id):
 
     return redirect('/')
 
-        
+
+@app.route('/<int:id>/detail', methods=['GET', 'POST'])
+@login_required
+def detail(id):
+    """
+    編集
+    """
+    todo = Todo.query.get(id)
+
+    # アクセスする場合
+    if request.method == 'GET':
+        return render_template('detail.html', todo=todo)
+    else:
+        return redirect('/')
