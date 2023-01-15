@@ -148,7 +148,7 @@ def delete(id):
 @login_required
 def detail(id):
     """
-    編集
+    詳細
     """
     todo = Todo.query.get(id)
 
